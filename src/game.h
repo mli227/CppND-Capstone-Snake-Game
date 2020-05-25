@@ -2,10 +2,13 @@
 #define GAME_H
 
 #include <random>
+#include <vector>
+#include <memory>
 #include "SDL.h"
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include "food.h"
 
 class Game {
  public:
@@ -14,10 +17,13 @@ class Game {
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  
 
  private:
   Snake snake;
-  SDL_Point food;
+  //data handles (owned)
+  std::vector<std::unique_ptr<Food>> _foods;
+  
 
   std::random_device dev;
   std::mt19937 engine;
@@ -25,9 +31,11 @@ class Game {
   std::uniform_int_distribution<int> random_h;
 
   int score{0};
+  int _bad_food_count{2};
 
   void PlaceFood();
   void Update();
+  bool Occupied(int x, int y);
 };
 
 #endif
