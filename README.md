@@ -39,3 +39,4 @@ Besides satisfaction of basic rubric points. The extra points of satisfaction ar
 5. The project uses move semantics to move data, instead of copying it, where possible: move semantics is used in "Food" class and "Game" class.
 6. The project uses smart pointers instead of raw pointers: unique pointer is used in "Game" class to manage foods.
 # CppND-Capstone-Snake-Game
+# CppND-Capstone-Snake-Game
