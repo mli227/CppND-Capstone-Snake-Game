@@ -1,12 +1,8 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Snake Game Extended
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is a repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
 <img src="snake_game.gif"/>
-
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -29,3 +25,17 @@ In this project, you can build your own C++ application or extend this Snake gam
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## Overview of Code Structure
+This project extends the basic snake game by placing good food (yellow food) and bad foods (red foods) on the screen. If the snake eats good food, its size increases and score increases. Otherwise, the size shrinks and score decreases. The bad foods are set to initial size of 2. Every time the snake eats a good food, the bad foods doubles in size. Maximum bad foods for this game is set to 32. If the snake collides with itself or its size shrink to 0, the snake is dead.
+Besides the original snake game files, this project creates a "Food" class which can set the food type to good or bad and stores the SDL point to render food. The "Snake" class is updated with bool indicator "shrinking" and method "ShrinkBody". The "Game" class creates a vector of unique pointer point to newly placed foods, including good food and bad foods. The "PlaceFood" method and "Update" method are updated to be able to place and update both good food and bad foods. An "Occupied" method is added to check if a cell is been occupied or not. The "Renderer" class is updated to render both good food and bad foods.
+
+## Explanation of rubric satisfaction
+Besides satisfaction of basic rubric points. The extra points of satisfaction are:
+1. The project uses Object Oriented Programming techniques: this project creats new object "Food" to represent food object and has attributes and class methods.
+2. Classes use appropriate access specifiers for class members: All class data members in "Food" and other classes are explicitly specified as public, protected, or private.
+3. Class constructors utilize member initialization lists: "Food" class utilize member initialization lists for initialization.
+4. The project follows the Rule of 5: "Food" class defined all of copy constructor, copy assignment operator, move constructor, move assignment operator and destructor.
+5. The project uses move semantics to move data, instead of copying it, where possible: move semantics is used in "Food" class and "Game" class.
+6. The project uses smart pointers instead of raw pointers: unique pointer is used in "Game" class to manage foods.
+# CppND-Capstone-Snake-Game
